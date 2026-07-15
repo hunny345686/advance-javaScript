@@ -1,35 +1,38 @@
-
-
 function debounce(fn, delay) {
+  let timer;
 
-    let timer
+  return function (...args) {
+    clearTimeout(timer);
 
-    return function (...args) {
-        clearTimeout(timer)
-
-        timer = setTimeout(() => {
-
-            fn.apply(this, ...args)
-        }, delay)
-    }
-
+    timer = setTimeout(() => {
+      fn.apply(this, ...args);
+    }, delay);
+  };
 }
 
-
 function throtal(fn, delay) {
+  let waiting = false;
 
-    let waiting = false
+  return function (...args) {
+    if (!waiting) {
+      fn.apply(this, args);
+      waiting = true;
 
-    return function (...args) {
-
-        if (!waiting) {
-            fn.apply(this, args)
-            waiting = true
-
-            setTimeout(() => {
-                waiting = false
-            }, delay)
-        }
+      setTimeout(() => {
+        waiting = false;
+      }, delay);
     }
+  };
+}
 
+function debounce(fn, delay) {
+  let timet;
+
+  return function (...args) {
+    clearTimeout(timet);
+
+    timet = setTimeout(() => {
+      fn.apply(this, args);
+    }, delay);
+  };
 }
