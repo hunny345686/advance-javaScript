@@ -17,3 +17,17 @@ const result = arr.myFilter((item, i, arr) => {
 
 console.log(result);
 // [2, 4]
+
+const id = Symbol("id");
+
+const user = {
+  [id]: 123,
+  [id]: 23234,
+  [id]: 444,
+  [id]: 6666,
+};
+
+user[id] = "Hello";
+
+console.log(user[id]);
+// 123
