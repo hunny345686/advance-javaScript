@@ -30,4 +30,5 @@ const user = {
 user[id] = "Hello";
 
 console.log(user[id]);
+console.log();
 // 123

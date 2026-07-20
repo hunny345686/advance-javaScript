@@ -48,3 +48,23 @@ em.on("oerderPlace", oerderPlace);
 em.on("oerderPlace", oerderPlaceByOnotherUser);
 em.emit("oerderPlace", "ABXS123");
 em.emit("oerderDeliver", { OderData: "Leptop" });
+
+let obj = {
+  name: "Prem",
+};
+
+let obj2 = {
+  name: "Prem",
+};
+
+obj3 = obj;
+
+// obj3.name = "Shyam";
+
+// obj = {};
+// obj2 = {}; Assigning new object will give error
+// console.log(obj, obj2, obj3);
+
+console.log(obj2 === obj);
+
+console.log(obj.toString());
