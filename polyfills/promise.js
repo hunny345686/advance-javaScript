@@ -70,7 +70,29 @@ const promises = [p1, p2, p3, p4, p5];
 
 function execiteInParrlar(allPro) {
   const allPromisseArry = allPro.map((p) => p());
-  return Promise.all(allPromisseArry);
+  function promiseAll(allPomise) {
+    return new Promise((resolve, reject) => {
+      const result = [];
+      let count = 0;
+
+      allPomise.forEach((pro, index) => {
+        pro
+          .then((data) => {
+            result[index] = data;
+            count++;
+
+            if (count === allPomise.length) {
+              resolve(result);
+            }
+          })
+          .catch((e) => {
+            reject(e);
+          });
+      });
+    });
+  }
+
+  return promiseAll(allPromisseArry);
 }
 
 execiteInParrlar(promises)
